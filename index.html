@@ -17,8 +17,7 @@
         <h1>Click on your favorite soccer player</h1>
         <h2>See 10 awesome gifs of that player</h2>
     <div class="container">
-        <div id="buttonsView">
-        </div>
+
         <div id="form">
             <form id="player-form">
                 <label for="player-input">Add YOUR favorite player</label>
@@ -33,6 +32,7 @@
         <button class="btn btn-primary btn-lg" data-player="Neymar">Neymar</button>
         <button class="btn btn-primary btn-lg" data-player="Cristiano Ronaldo">Cristiano</button>
         <button class="btn btn-primary btn-lg" data-player="Alexis Sanchez">Alexis</button>
+        <button class="btn btn-primary btn-lg" id="buttonsView"></button>
     </div>
         <!-- come back to add input where users can create buttons for their favorite players -->
         
@@ -67,18 +67,24 @@
 
     function makeButtons(){ // remember to add this to the html
         $("#buttonsView").empty(); // clear old players in array
+        console.log("i am working");
         for (i=0; i<players.length; i++){
             var newButton = $("<button>");
+            console.log(newButton);
             newButton.addClass("player");
             newButton.attr("data-name", players[i]);
+            console.log(players[i]);
             newButton.text(players[i]);
-            $("buttonsView").append(newButton);
+            $("#buttonsView").append(newButton);
+            console.log(newButton);
         }
     };
     
-    $("#addButton").on("click", function(){
+    $("#addPlayer").on("click", function(){
         var player = $("#player-input").val().trim();
+        console.log(player);
         players.push(player);
+        console.log(players);
         makeButtons();
         return false; // should let users hit Enter instead of clicking submit
     });
